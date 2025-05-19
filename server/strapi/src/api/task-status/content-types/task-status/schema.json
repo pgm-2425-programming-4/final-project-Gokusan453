@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_statuses",
+  "info": {
+    "singularName": "task-status",
+    "pluralName": "task-statuses",
+    "displayName": "Task-status",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task"
+    }
+  }
+}
