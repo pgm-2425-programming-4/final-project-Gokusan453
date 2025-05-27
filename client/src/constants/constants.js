@@ -1,7 +1,9 @@
-export const API_URL = 'http://localhost:1337/api';
+export const API_URL = import.meta.env.PROD
+? "https://final-project-gokusan453.onrender.com/api"
+: 'http://localhost:1337/api';
 
-export const API_TOKEN = import.meta.znv.PROD
-? "PROD TOKEN"
+export const API_TOKEN = import.meta.env.PROD
+? "47fb43675669e4cd7cbf5b378e9b71691064160f9c615aa809698a6c4d94f7f572ad91ff5e96c6b922de1e1ffb38d3cf1fe822e66bf970e15a415147c4d67bade7a0048d9d5a12e0a5124465a1c6bd8a4aa7b2cc65e5e46b78c7620b4293f6768563a242614e2ec9ef90539c6c3093b6a7c56e5c4d7676309207ea92369269d8"
 :"17548ff61aa683d49ab02e00f3b08ce20d78a8b59dceddbe2b79155bed4b0fcc168a4e34cc521e282b244ba388af71cb6191982be82e12141386cb497c57658b0bdf66ec4a3ed8875601dbef245aeec375f3d1f7595baa8c73dd886018df449d851ab357e8c1fe11a071106b3771f2f3c523ca9c831a37abff5afa14e0a6f8e4"
 
 export const PAGE_SIZE_OPTIONS = [5, 10, 25, 50];
