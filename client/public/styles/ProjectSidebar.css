@@ -1,3 +1,10 @@
+.ProjectSidebar {
+  border-right: 2px solid #ccc;
+  padding: 1rem;
+  padding-right: 2rem;
+  gap: 2rem;
+}
+
 .ProjectSidebar__list {
     list-style: none;
 
@@ -15,14 +22,5 @@
       text-decoration: underline;
       font-weight: 800;
       color: rgb(84, 84, 191);
-
-      &::after {
-        content: " ";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 0.2rem;
-        height: 100%;
-      }
     }
   }
