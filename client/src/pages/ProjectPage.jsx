@@ -6,20 +6,16 @@ import { useQueryClient } from "@tanstack/react-query";
 import FilterBar from "../components/FilterBar";
 import { Outlet } from "@tanstack/react-router";
 
+
 export default function ProjectPage({ projectId }) {
   const [selectedLabel, setSelectedLabel] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [notification, setNotification] = useState(null);
   const queryClient = useQueryClient();
-  const params = /\/projects\/([^/]+)/.exec(location.pathname);
-  const activeProject = params ? params[1].toUpperCase() : null;
-  useEffect(() => {}, [projectId]);
-
+  const activeProject = projectId?.toUpperCase() || null;
   const handleCloseForm = () => setTaskToEdit(null);
-  const handleAddTask = () => {
-    setTaskToEdit({});
-  };
+  const handleAddTask = () => setTaskToEdit({});
   const handleSubmitTask = async (task) => {
     try {
       const taskId = task.documentId;
@@ -43,19 +39,17 @@ export default function ProjectPage({ projectId }) {
         }),
       });
 
-      console.log(res);
-
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(`Error ${res.status}: ${errorText}`);
       }
 
-      setNotification({ type: "success", message: "✅ Taak opgeslagen!" });
+      setNotification({ type: "success", message: "✅" });
     } catch (err) {
       console.error(err);
       setNotification({
         type: "error",
-        message: "❌ Fout bij het opslaan",
+        message: "❌",
       });
     } finally {
       handleCloseForm();
@@ -78,19 +72,19 @@ export default function ProjectPage({ projectId }) {
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(
-          `Fout bij het verwijderen van de taak: ${res.status} ${errorText}`
+          `Error deleting task: ${res.status} ${errorText}`
         );
       }
 
       setNotification({
         type: "success",
-        message: "Taak succesvol verwijderd!",
+        message: "Task succesfully deleted!",
       });
     } catch (err) {
       console.error("Error deleting task:", err);
       setNotification({
         type: "error",
-        message: "Fout bij het verwijderen van de taak.",
+        message: "Error deleting task. Please try again.",
       });
     } finally {
       handleCloseForm();
@@ -130,7 +124,7 @@ export default function ProjectPage({ projectId }) {
           {notification.message}
         </div>
       )}
-      <Outlet />
+      <Outlet/>
     </>
   );
 }
