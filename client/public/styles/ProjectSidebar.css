@@ -2,7 +2,7 @@
   border-right: 2px solid #ccc;
   padding: 1rem;
   padding-right: 2rem;
-
+  gap: 2rem;
 }
 
 .ProjectSidebar__list {
