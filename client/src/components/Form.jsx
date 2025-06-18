@@ -1,7 +1,9 @@
+//Form voor maken en editen van taken
 import { useState, useEffect } from "react";
 import { API_URL, API_TOKEN } from "../constants/constants";
 
 export function Form({ onClose, onSubmit, onDelete, task }) {
+  // status voor alle data
   const [Title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [labels, setLabels] = useState([]);
@@ -11,6 +13,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState("");
 
+  // laden van statusen, labels en projecten
   useEffect(() => {
     async function fetchData(endpoint, setter) {
       const res = await fetch(`${API_URL}/${endpoint}`, {
@@ -22,7 +25,6 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
       console.log(res);
       setter(json.data);
     }
-    
     fetchData("labels", setLabels);
     fetchData("task-statuses", setStates);
     fetchData("projects", setProjects);
@@ -45,7 +47,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
       Title,
       description,
       labels: selectedTaskTypes.map((id) => ({ id })),
-      state: { id: Number(selectedState) },
+      task_status: { id: Number(selectedState) },
       project: { id: Number(selectedProject) },
       documentId: task?.documentId,
     };
@@ -56,6 +58,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
     onDelete(task);
   };
 
+// Form aanmaken en bewerken van taken
   return (
     <div className="popup">
       <div className="popup__inner">
@@ -104,8 +107,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
                 Project:
                 <select
                   value={selectedProject}
-                  onChange={(e) => setSelectedProject(e.target.value)}
-                >
+                  onChange={(e) => setSelectedProject(e.target.value)}>
                   <option value="">-- Selecteer een project --</option>
                   {projects.map((proj) => (
                     <option key={proj.id} value={proj.id}>
@@ -118,8 +120,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
                 Status:
                 <select
                   value={selectedState}
-                  onChange={(e) => setSelectedState(e.target.value)}
-                >
+                  onChange={(e) => setSelectedState(e.target.value)}>
                   <option value="">-- Selecteer een status --</option>
                   {task_status.map((state) => (
                     <option key={state.id} value={state.id}>
@@ -135,8 +136,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
                 <textarea
                   value={description}
                   rows="4"
-                  onChange={(e) => setDescription(e.target.value)}
-                />
+                  onChange={(e) => setDescription(e.target.value)}/>
               </label>
             </div>
           </div>
