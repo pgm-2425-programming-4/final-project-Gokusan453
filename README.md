@@ -26,4 +26,5 @@ npm run dev
 ## Deployment Links
 
 **Netlify:** https://lovely-choux-734550.netlify.app
+
 **Render Strapi:** https://final-project-gokusan453.onrender.com

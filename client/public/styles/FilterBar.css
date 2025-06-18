@@ -1,6 +1,15 @@
 .taskboard__header {
     display: flex;
     width: 100%;
+    justify-content: space-between;
+}
+
+.taskboard__filters {
+    width: 65%;
+}
+
+.taskboard__search {
+    width: 100%;
 }
 
 .taskboard__columns {
@@ -8,4 +17,16 @@
     flex-direction: row;
     gap: 4rem;
     width: 100%;
+}
+
+.taskboard__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.taskboard__filters {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
