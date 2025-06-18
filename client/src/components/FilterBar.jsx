@@ -1,4 +1,4 @@
-//topbar
+// Header bar: Dropdown, zoekbalk, toevoegen taak en backlog bekijken
 import { useNavigate } from "@tanstack/react-router";
 
 export default function FilterBar({
@@ -9,36 +9,25 @@ export default function FilterBar({
   onAddTask,
   activeProject,
 }) {
-  const labels = ["All", "Front-end", "Back-end", "Infra", "Documentation"];
   const navigate = useNavigate();
-
-  const handleViewBacklog = () => {
-    if (!activeProject) return;
-    navigate({ to: `/projects/${activeProject}/backlog` });
-  };
 
   return (
     <>
       <div className="taskboard__filters">
+
         <select
           className="taskboard__select"
           value={selectedLabel}
           onChange={(e) => onLabelChange(e.target.value)}
-          aria-label="Filter tasks by label"
         >
-          {!labels || labels.length === 0 ? (
-            <option className="visually-hidden" disabled>
-              Aucun label
-            </option>
-          ) : (
-            labels.map((label) => (
-              <option key={label} value={label}>
-                {label}
-              </option>
-            ))
-          )}
+          <option value="All">All</option>
+          <option value="Front-end">Front-end</option>
+          <option value="Back-end">Back-end</option>
+          <option value="Infra">Infra</option>
+          <option value="Documentation">Documentation</option>
         </select>
 
+        {/* zoek balk */}
         <input
           type="text"
           className="taskboard__search"
@@ -47,13 +36,18 @@ export default function FilterBar({
           onChange={(e) => onSearchChange(e.target.value)}
         />
       </div>
+
       <div className="taskboard__actions">
+
         <button className="btn btn--add" onClick={onAddTask}>
           Add new task
         </button>
+
         <button
           className="btn btn--backlog"
-          onClick={handleViewBacklog}
+          onClick={() =>
+            activeProject && navigate({ to: `/projects/${activeProject}/backlog` })
+          }
           disabled={!activeProject}
         >
           View backlog

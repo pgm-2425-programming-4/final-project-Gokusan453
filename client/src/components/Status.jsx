@@ -1,4 +1,3 @@
-//statusboard 
 import { TaskColumn } from "./TaskColumn";
 
 export default function Status({

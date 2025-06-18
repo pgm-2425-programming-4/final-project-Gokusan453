@@ -1,4 +1,3 @@
-//column
 import { useQuery } from "@tanstack/react-query";
 import { API_URL, API_TOKEN } from "../constants/constants";
 
@@ -22,7 +21,7 @@ export function TaskColumn({
     if (!res.ok) {
       const errorText = await res.text();
       console.error("❌ Fetch failed:", res.status, errorText);
-      throw new Error(`Failed to fetch tasks: ${res.status} ${res.statusText}`);
+      throw new Error(`Failed to Fetch: ${res.status} ${res.statusText}`);
     }
 
     const data = await res.json();
@@ -74,11 +73,7 @@ export function TaskColumn({
         const taskTypes = task.labels || [];
 
         return (
-          <div
-            key={task.id}
-            className="taskcard"
-            onClick={() => onEditTask(task)}
-          >
+          <div key={task.id} className="taskcard" onClick={() => onEditTask(task)}>
             <p className="taskcard__title">{task.Title}</p>
             <div className="taskcard__task-types">
               {taskTypes.map((type, index) => {
@@ -92,7 +87,7 @@ export function TaskColumn({
 
                 return (
                   <span key={type.id || index} className="taskcard__label">
-                    {icons[name] || "🏷️"} {name}
+                    {icons[name] || "🔖"} {name}
                   </span>
                 );
               })}

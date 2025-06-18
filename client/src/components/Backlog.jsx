@@ -1,3 +1,4 @@
+//Backlog tabel met taken en status
 export default function Backlog({ tasks }) {
     return (
       <table>
@@ -14,9 +15,6 @@ export default function Backlog({ tasks }) {
             <tr key={task.id}>
               <td>{task.Title}</td>
               <td>{task.description || "-"}</td>
-              <td>
-                {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "-"}
-              </td>
               <td>{task.task_status?.name || "-"}</td>
             </tr>
           ))}

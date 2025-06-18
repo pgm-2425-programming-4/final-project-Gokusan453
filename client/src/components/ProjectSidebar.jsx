@@ -1,4 +1,3 @@
-//sidebar
 import { Link, useLocation } from "@tanstack/react-router";
 
 export function ProjectSidebar({ projects, onProjectSelect }) {
@@ -8,15 +7,13 @@ export function ProjectSidebar({ projects, onProjectSelect }) {
     <nav>
       <Link
         className={location.pathname === "/" ? "ProjectSidebar__item active" : "ProjectSidebar__item"}
-        to="/"
-      >
+        to="/">
         Home
       </Link>
 
       <Link
         className={location.pathname === "/about" ? "ProjectSidebar__item active" : "ProjectSidebar__item"}
-        to="/about"
-      >
+        to="/about">
         About
       </Link>
 
