@@ -13,6 +13,13 @@ export function ProjectSidebar({ projects, onProjectSelect }) {
         Home
       </Link>
 
+      <Link
+        className={location.pathname === "/about" ? "ProjectSidebar__item active" : "ProjectSidebar__item"}
+        to="/about"
+      >
+        About
+      </Link>
+
       <h2 className="ProjectSidebar__title">PROJECTS</h2>
       <ul className="ProjectSidebar__list">
         {projects.map((project) => {
@@ -30,14 +37,6 @@ export function ProjectSidebar({ projects, onProjectSelect }) {
           );
         })}
       </ul>
-
-      <h2 className="ProjectSidebar__title">INFO</h2>
-      <Link
-        className={location.pathname === "/about" ? "ProjectSidebar__item active" : "ProjectSidebar__item"}
-        to="/about"
-      >
-        About
-      </Link>
     </nav>
   );
 }
