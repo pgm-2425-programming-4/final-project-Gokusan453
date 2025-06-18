@@ -6,6 +6,7 @@ import { API_URL, API_TOKEN } from "../constants/constants";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function Layout() {
+  //
   const [selectedLabel, setSelectedLabel] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [taskToEdit, setTaskToEdit] = useState(null);
@@ -43,12 +44,12 @@ export default function Layout() {
         throw new Error(`Error ${res.status}: ${errorText}`);
       }
 
-      setNotification({ type: "success", message: "✅ Taak opgeslagen!" });
+      setNotification({ type: "success", message: "✅" });
     } catch (err) {
       console.error(err);
       setNotification({
-        type: "error",
-        message: "❌ Fout bij het opslaan",
+        type: "Error",
+        message: "❌",
       });
     } finally {
       handleCloseForm();
@@ -71,19 +72,19 @@ export default function Layout() {
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(
-          `Fout bij het verwijderen van de taak: ${res.status} ${errorText}`
+          `Error deleting task ${res.status} ${errorText}`
         );
       }
 
       setNotification({
         type: "success",
-        message: "Taak succesvol verwijderd!",
+        message: "Task deleted!",
       });
     } catch (err) {
       console.error("Error deleting task:", err);
       setNotification({
         type: "error",
-        message: "Fout bij het verwijderen van de taak.",
+        message: "Error deleting task",
       });
     } finally {
       handleCloseForm();
