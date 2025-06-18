@@ -24,3 +24,11 @@
       color: rgb(84, 84, 191);
     }
   }
+
+  .ProjectSidebar__item {
+    margin-bottom: 1rem;
+  }
+
+  .ProjectSidebar__title {
+    margin-top: 3rem;
+  }
