@@ -14,7 +14,7 @@ export default function FilterBar({
   return (
     <>
       <div className="taskboard__filters">
-        {/* Dropdown */}
+
         <select
           className="taskboard__select"
           value={selectedLabel}
@@ -38,11 +38,11 @@ export default function FilterBar({
       </div>
 
       <div className="taskboard__actions">
-        {/* Taak toevoegen */}
+
         <button className="btn btn--add" onClick={onAddTask}>
           Add new task
         </button>
-        {/* Backlog */}
+
         <button
           className="btn btn--backlog"
           onClick={() =>
