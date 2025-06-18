@@ -1,0 +1,28 @@
+.ProjectSidebar__list {
+    list-style: none;
+
+}
+  
+  .ProjectSidebar__item {
+    cursor: pointer;
+    color: rgb(39, 41, 39);
+    text-decoration: none;
+    display: block;
+    position: relative;
+    width: 100%;
+
+    &.active {
+      text-decoration: underline;
+      font-weight: 800;
+      color: rgb(84, 84, 191);
+
+      &::after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0.2rem;
+        height: 100%;
+      }
+    }
+  }
