@@ -59,7 +59,7 @@ export function Form({ onClose, onSubmit, onDelete, task }) {
   return (
     <div className="popup">
       <div className="popup__inner">
-        <h2>{task?.id ? `Bewerk taak ${task?.id}` : "Voeg een taak toe"}</h2>
+        <h2>{task?.id ? `Bewerk taak ${task?.Title}` : "Voeg een taak toe"}</h2>
         <form className="popup__container" onSubmit={handleSubmit}>
           <div className="popup__block">
             <div className="popup__content">
