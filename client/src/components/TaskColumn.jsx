@@ -63,8 +63,8 @@ export function TaskColumn({
     });
 
   return (
-    <section className="taskboard__column">
-      <h3 className="taskboard__title">{status}</h3>
+    <section className="task_column">
+      <h3 className="task__title">{status}</h3>
 
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error loading tasks: {error.message}</p>}
@@ -84,8 +84,8 @@ export function TaskColumn({
               {taskTypes.map((type, index) => {
                 const name = type.name;
                 const icons = {
-                  "Front-end": "🎨",
-                  "Back-end": "🧠",
+                  "Front-end": "🖼️",
+                  "Back-end": "🧑‍💻",
                   Infra: "🛠️",
                   Documentation: "📄",
                 };
